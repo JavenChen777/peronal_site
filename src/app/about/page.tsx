@@ -35,9 +35,11 @@ export default function AboutPage(): JSX.Element {
           <em>my</em> workflow faster, and I figured they might help you too.
         </p>
         <p className="text-muted-foreground mt-4 leading-relaxed">
-          I believe great developer tools should be fast, simple, and private. Every tool on this
-          site runs entirely in your browser — nothing is sent to a server. No accounts, no
-          telemetry, no nonsense.
+          Most of these tools were built with the help of AI — rapidly turning everyday needs into
+          working software is one of the things I enjoy most about modern development.
+        </p>
+        <p className="text-muted-foreground mt-4 leading-relaxed">
+          I believe great developer tools should be fast, simple, and private.
         </p>
       </section>
 

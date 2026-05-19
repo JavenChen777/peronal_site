@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github, Download } from 'lucide-react';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -100,6 +100,17 @@ export default function ToolDetailPage({ params }: PageProps): JSX.Element {
               >
                 <Github className="h-4 w-4" aria-hidden="true" />
                 View Source
+              </a>
+            )}
+            {tool.downloadUrl && (
+              <a
+                href={tool.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-border bg-background text-foreground hover:bg-muted inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-colors"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                夸克网盘下载
               </a>
             )}
           </div>

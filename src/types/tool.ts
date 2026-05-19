@@ -20,6 +20,8 @@ export interface Tool {
   url?: string;
   /** GitHub repository URL */
   githubUrl?: string;
+  /** 网盘分享下载地址（如夸克网盘） */
+  downloadUrl?: string;
   status: ToolStatus;
   /** Appears in the Hero "Featured" section (max 6) */
   featured?: boolean;

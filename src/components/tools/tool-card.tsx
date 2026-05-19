@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Tool } from '@/types/tool';
 import { cn } from '@/lib/utils';
@@ -77,7 +77,7 @@ export default function ToolCard({ tool }: ToolCardProps): JSX.Element {
         )}
 
         {/* Action links */}
-        {(tool.url || tool.githubUrl) && (
+        {(tool.url || tool.githubUrl || tool.downloadUrl) && (
           <div className="flex items-center justify-end gap-2">
             {tool.url && (
               <a
@@ -101,6 +101,18 @@ export default function ToolCard({ tool }: ToolCardProps): JSX.Element {
                 className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-md p-1.5 transition-colors"
               >
                 <Github className="h-4 w-4" />
+              </a>
+            )}
+            {tool.downloadUrl && (
+              <a
+                href={tool.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`Download ${tool.name} from 夸克网盘`}
+                className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-md p-1.5 transition-colors"
+              >
+                <Download className="h-4 w-4" />
               </a>
             )}
           </div>
