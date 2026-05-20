@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, ExternalLink, Github, Download } from 'lucide-react';
 import type { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
@@ -137,13 +138,16 @@ export default function ToolDetailPage({ params }: PageProps): JSX.Element {
           <h2 className="text-foreground mb-4 text-lg font-semibold">Screenshots</h2>
           <div className="grid gap-4">
             {tool.screenshots.map((src, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={i}
-                src={src}
-                alt={`${tool.name} screenshot ${i + 1}`}
-                className="border-border w-full rounded-xl border object-contain shadow-sm"
-              />
+              <div key={i} className="border-border relative w-full overflow-hidden rounded-xl border shadow-sm">
+                <Image
+                  src={src}
+                  alt={`${tool.name} screenshot ${i + 1}`}
+                  width={1280}
+                  height={800}
+                  className="h-auto w-full object-contain"
+                  unoptimized
+                />
+              </div>
             ))}
           </div>
         </div>
