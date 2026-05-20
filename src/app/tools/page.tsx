@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { tools } from '@/data/tools';
 import ToolsCatalogClient from './catalog-client';
+import ToolsHeader from './tools-header';
 
 export const metadata: Metadata = {
   title: 'All Tools',
@@ -21,12 +22,7 @@ function CatalogSkeleton(): JSX.Element {
 export default function ToolsPage(): JSX.Element {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-      <div className="mb-8">
-        <h1 className="text-foreground text-3xl font-bold">All Tools</h1>
-        <p className="text-muted-foreground mt-2">
-          Browse, search, and filter {tools.length} developer tools.
-        </p>
-      </div>
+      <ToolsHeader count={tools.length} />
       <Suspense fallback={<CatalogSkeleton />}>
         <ToolsCatalogClient />
       </Suspense>

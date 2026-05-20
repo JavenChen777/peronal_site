@@ -1,5 +1,8 @@
-import { cn, getCategoryColor, CATEGORY_LABELS } from '@/lib/utils';
+'use client';
+
+import { cn, getCategoryColor } from '@/lib/utils';
 import type { ToolCategory } from '@/types/tool';
+import { useLang } from '@/lib/i18n';
 
 interface CategoryBadgeProps {
   category: ToolCategory;
@@ -7,6 +10,7 @@ interface CategoryBadgeProps {
 }
 
 export default function CategoryBadge({ category, className }: CategoryBadgeProps): JSX.Element {
+  const { t } = useLang();
   const colors = getCategoryColor(category);
   return (
     <span
@@ -18,7 +22,7 @@ export default function CategoryBadge({ category, className }: CategoryBadgeProp
         className
       )}
     >
-      {CATEGORY_LABELS[category]}
+      {t.categories[category]}
     </span>
   );
 }

@@ -1,8 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { Github, Twitter, Mail, Code2 } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 export default function Footer(): JSX.Element {
   const year = new Date().getFullYear();
+  const { t } = useLang();
 
   return (
     <footer className="border-border bg-background border-t">
@@ -20,19 +24,19 @@ export default function Footer(): JSX.Element {
               href="/"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Home
+              {t.nav.home}
             </Link>
             <Link
               href="/tools"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              Tools
+              {t.nav.tools}
             </Link>
             <Link
               href="/about"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              About
+              {t.nav.about}
             </Link>
           </nav>
 
@@ -67,7 +71,7 @@ export default function Footer(): JSX.Element {
         </div>
 
         <div className="text-muted-foreground mt-6 text-center text-xs">
-          © {year} DevToolbox. Built with Next.js and ☕.
+          © {year} DevToolbox. {t.footer.built}
         </div>
       </div>
     </footer>

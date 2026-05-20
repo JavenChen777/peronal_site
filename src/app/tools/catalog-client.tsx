@@ -2,15 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { tools as allTools } from '@/data/tools';
-import { filterTools, sortTools, ALL_CATEGORIES, CATEGORY_LABELS } from '@/lib/utils';
+import { filterTools, sortTools, ALL_CATEGORIES } from '@/lib/utils';
 import type { ToolCategory } from '@/types/tool';
 import SearchBar from '@/components/tools/search-bar';
 import CategoryFilter from '@/components/tools/category-filter';
 import ToolGrid from '@/components/tools/tool-grid';
+import { useLang } from '@/lib/i18n';
 
 export default function ToolsCatalogClient(): JSX.Element {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<ToolCategory | 'all'>('all');
+  const { t } = useLang();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -29,12 +31,12 @@ export default function ToolsCatalogClient(): JSX.Element {
 
   const counts: Record<ToolCategory | 'all', number> = {
     all: allTools.length,
-    developer: allTools.filter((t) => t.category === 'developer').length,
-    productivity: allTools.filter((t) => t.category === 'productivity').length,
-    design: allTools.filter((t) => t.category === 'design').length,
-    data: allTools.filter((t) => t.category === 'data').length,
-    media: allTools.filter((t) => t.category === 'media').length,
-    other: allTools.filter((t) => t.category === 'other').length,
+    developer: allTools.filter((tool) => tool.category === 'developer').length,
+    productivity: allTools.filter((tool) => tool.category === 'productivity').length,
+    design: allTools.filter((tool) => tool.category === 'design').length,
+    data: allTools.filter((tool) => tool.category === 'data').length,
+    media: allTools.filter((tool) => tool.category === 'media').length,
+    other: allTools.filter((tool) => tool.category === 'other').length,
   };
 
   return (
@@ -42,7 +44,7 @@ export default function ToolsCatalogClient(): JSX.Element {
       <SearchBar
         value={query}
         onChange={setQuery}
-        placeholder="Search by name, description, or tag…"
+        placeholder={t.tools.searchPlaceholder}
         className="mb-4"
       />
 
@@ -51,23 +53,29 @@ export default function ToolsCatalogClient(): JSX.Element {
       </div>
 
       <div className="text-muted-foreground mb-4 text-sm">
-        Showing <span className="text-foreground font-medium">{filtered.length}</span> of{' '}
-        <span className="text-foreground font-medium">{allTools.length}</span> tools
+        {t.tools.showing} <span className="text-foreground font-medium">{filtered.length}</span>{' '}
+        {t.tools.of} <span className="text-foreground font-medium">{allTools.length}</span>
         {category !== 'all' && (
           <>
             {' '}
-            in <span className="text-foreground font-medium">{CATEGORY_LABELS[category]}</span>
+            {t.tools.inCategory}
+            <span className="text-foreground font-medium">{t.categories[category]}</span>
           </>
         )}
         {query && (
           <>
-            {' matching '}
+            {' '}
+            {t.tools.matching}
             &quot;<span className="text-foreground font-medium">{query}</span>&quot;
           </>
         )}
       </div>
 
-      <ToolGrid tools={filtered} />
+      <ToolGrid
+        tools={filtered}
+        emptyMessage={t.tools.noResults}
+        emptySubMessage={t.tools.clearFilters}
+      />
     </>
   );
 }

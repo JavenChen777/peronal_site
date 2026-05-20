@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
+import { LangProvider } from '@/lib/i18n';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -10,7 +11,7 @@ interface ProvidersProps {
 export default function Providers({ children }: ProvidersProps): JSX.Element {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      {children}
+      <LangProvider>{children}</LangProvider>
     </ThemeProvider>
   );
 }

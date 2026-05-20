@@ -6,16 +6,19 @@ import { Code2, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/common/theme-toggle';
-
-const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/tools', label: 'Tools' },
-  { href: '/about', label: 'About' },
-];
+import LangToggle from '@/components/common/lang-toggle';
+import { useLang } from '@/lib/i18n';
 
 export default function Header(): JSX.Element {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLang();
+
+  const navLinks = [
+    { href: '/', label: t.nav.home },
+    { href: '/tools', label: t.nav.tools },
+    { href: '/about', label: t.nav.about },
+  ];
 
   return (
     <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md">
@@ -28,7 +31,7 @@ export default function Header(): JSX.Element {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -46,6 +49,7 @@ export default function Header(): JSX.Element {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
+          <LangToggle />
           <ThemeToggle />
           <button
             className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-lg p-2 md:hidden"
@@ -64,7 +68,7 @@ export default function Header(): JSX.Element {
           className="border-border bg-background border-t px-4 pb-4 pt-2 md:hidden"
           aria-label="Mobile navigation"
         >
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}

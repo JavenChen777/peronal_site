@@ -1,7 +1,8 @@
 'use client';
 
-import { cn, getCategoryColor, CATEGORY_LABELS, ALL_CATEGORIES } from '@/lib/utils';
+import { cn, getCategoryColor, ALL_CATEGORIES } from '@/lib/utils';
 import type { ToolCategory } from '@/types/tool';
+import { useLang } from '@/lib/i18n';
 
 interface CategoryFilterProps {
   selected: ToolCategory | 'all';
@@ -14,6 +15,7 @@ export default function CategoryFilter({
   counts,
   onChange,
 }: CategoryFilterProps): JSX.Element {
+  const { t } = useLang();
   const allCategories: Array<ToolCategory | 'all'> = ['all', ...ALL_CATEGORIES];
 
   return (
@@ -21,7 +23,7 @@ export default function CategoryFilter({
       {allCategories.map((cat) => {
         const isActive = selected === cat;
         const colors = cat !== 'all' ? getCategoryColor(cat) : null;
-        const label = cat === 'all' ? 'All' : CATEGORY_LABELS[cat];
+        const label = t.categories[cat];
         const count = counts[cat] ?? 0;
 
         return (

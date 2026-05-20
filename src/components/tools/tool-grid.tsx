@@ -4,18 +4,20 @@ import ToolCard from './tool-card';
 interface ToolGridProps {
   tools: Tool[];
   emptyMessage?: string;
+  emptySubMessage?: string;
 }
 
 export default function ToolGrid({
   tools,
   emptyMessage = 'No tools found. Try adjusting your search or filters.',
+  emptySubMessage = 'Clear your filters to see all tools.',
 }: ToolGridProps): JSX.Element {
   if (tools.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <div className="mb-3 text-4xl">🔍</div>
         <p className="text-muted-foreground text-base">{emptyMessage}</p>
-        <p className="text-muted-foreground mt-1 text-sm">Clear your filters to see all tools.</p>
+        <p className="text-muted-foreground mt-1 text-sm">{emptySubMessage}</p>
       </div>
     );
   }
