@@ -93,7 +93,7 @@ C++ · Qt6 · Qt Charts · CMake · JSON`,
     icon: '✅',
     githubUrl: 'https://github.com/JavenChen777/toDoList',
     status: 'stable',
-    featured: false,
+    featured: true,
     screenshots: ['/screenshots/todolist.png'],
   },
 ];
