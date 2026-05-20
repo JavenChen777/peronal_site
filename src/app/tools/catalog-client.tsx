@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { tools as allTools } from '@/data/tools';
 import { filterTools, sortTools, ALL_CATEGORIES, CATEGORY_LABELS } from '@/lib/utils';
 import type { ToolCategory } from '@/types/tool';
@@ -10,13 +9,16 @@ import CategoryFilter from '@/components/tools/category-filter';
 import ToolGrid from '@/components/tools/tool-grid';
 
 export default function ToolsCatalogClient(): JSX.Element {
-  const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category') as ToolCategory | null;
-
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState<ToolCategory | 'all'>(
-    initialCategory && ALL_CATEGORIES.includes(initialCategory) ? initialCategory : 'all'
-  );
+  const [category, setCategory] = useState<ToolCategory | 'all'>('all');
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('category') as ToolCategory | null;
+    if (cat && ALL_CATEGORIES.includes(cat)) {
+      setCategory(cat);
+    }
+  }, []);
 
   const handleCategoryChange = (cat: ToolCategory | 'all'): void => {
     setCategory(cat);
