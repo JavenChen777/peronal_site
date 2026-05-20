@@ -45,6 +45,57 @@ C++ · Win32 API · CMake`,
     featured: true,
     screenshots: ['/screenshots/screen_shot.png'],
   },
+  {
+    slug: 'todo-list',
+    name: 'ToDoList',
+    description: 'Windows 待办事项管理程序，支持分类、优先级、统计图表与外部 API。',
+    longDescription: `## ToDoList
+
+一个功能完整的 Windows 待办事项管理程序，使用 C++ 和 Qt6 框架开发，贴纸风格界面，支持深色/浅色主题。
+
+## 功能特性
+
+### 核心功能
+- 任务的新增、编辑、删除、批量删除
+- 标记任务为已完成 / 待办
+- 任务搜索和过滤（按状态、关键词）
+- 任务分类、优先级、截止日期、标签管理
+- 数据持久化（JSON 格式），支持自动备份、损坏恢复、原子写入
+- 开机自动启动，启动时最小化到系统托盘
+
+### 自动弹出 / 隐藏
+- 可配置的自动显示间隔（分钟）和自动隐藏延迟（秒）
+- 点击窗口取消自动隐藏（进入手动模式）
+
+### 统计与分析
+- 任务完成趋势图（最近 7 天）
+- 分类分布饼图
+- 优先级分布柱状图
+- 完成率统计
+
+### 外部 API 接口
+- **网络 API** — HTTP REST API，默认监听 \`127.0.0.1:8888\`，仅本机访问
+- **本地 API** — IPC 命名管道
+- 支持 PowerShell、Python、curl 等多种调用方式
+
+## 环境要求
+
+- Windows 10 / 11
+- Qt 6.2+（含 Qt Charts 组件）
+- CMake 3.16+
+- MSVC 2019 或更高版本（或 MinGW）
+
+## Tech Used
+
+C++ · Qt6 · Qt Charts · CMake · JSON`,
+    category: 'productivity',
+    tags: ['windows', 'todo', 'task-manager', 'qt', 'cpp', 'tray', 'statistics', 'api'],
+    icon: '✅',
+    githubUrl: 'https://github.com/JavenChen777/toDoList',
+    status: 'stable',
+    featured: false,
+    screenshots: ['/screenshots/todolist.png'],
+  },
 ];
 
 export default tools;
