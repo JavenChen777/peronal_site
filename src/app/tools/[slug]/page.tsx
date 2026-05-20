@@ -136,7 +136,7 @@ export default function ToolDetailPage({ params }: PageProps): JSX.Element {
       {tool.screenshots && tool.screenshots.length > 0 && (
         <div className="mb-8">
           <h2 className="text-foreground mb-4 text-lg font-semibold">Screenshots</h2>
-          <div className="grid gap-4">
+          <div className="grid gap-3 sm:grid-cols-2">
             {tool.screenshots.map((src, i) => (
               <div key={i} className="border-border relative w-full overflow-hidden rounded-xl border shadow-sm">
                 <Image
