@@ -92,10 +92,10 @@ const zh: Translations = {
   home: {
     badge: '开源工具，永久免费',
     titlePrefix: '我为',
-    titleHighlight: '开发者',
-    titleSuffix: '打造的工具',
+    titleHighlight: '自己',
+    titleSuffix: '打造的个性工具',
     subtitle:
-      '一个不断成长的实用工具集合——都是我为了提升工作流而构建的小软件，也许同样能帮到你。无需登录，无追踪，好用就行。',
+      '一个不断成长的实用工具集合——都是我为了日常方便而构建的小软件，也许同样能帮到你。无需登录，无追踪，好用就行。',
     stats: {
       totalTools: '工具总数',
       categories: '分类',
@@ -166,11 +166,11 @@ const en: Translations = {
   },
   home: {
     badge: 'Open source tools, free forever',
-    titlePrefix: 'Tools I Built for',
-    titleHighlight: 'Developers',
+    titlePrefix: 'Tools I Built',
+    titleHighlight: 'for Myself',
     titleSuffix: '',
     subtitle:
-      "A growing collection of utilities and small software I've built to scratch my own itches. No login, no tracking, just tools that work.",
+      "A growing collection of utilities I've built for everyday convenience — maybe they'll help you too. No login, no tracking, just tools that work.",
     stats: {
       totalTools: 'Total Tools',
       categories: 'Categories',
