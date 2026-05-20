@@ -43,6 +43,7 @@ C++ · Win32 API · CMake`,
     downloadUrl: 'https://pan.quark.cn/s/91952b402970',
     status: 'stable',
     featured: true,
+    screenshots: ['/screenshots/screen_shot.png'],
   },
 ];
 

@@ -131,6 +131,24 @@ export default function ToolDetailPage({ params }: PageProps): JSX.Element {
         </div>
       )}
 
+      {/* Screenshots */}
+      {tool.screenshots && tool.screenshots.length > 0 && (
+        <div className="mb-8">
+          <h2 className="text-foreground mb-4 text-lg font-semibold">Screenshots</h2>
+          <div className="grid gap-4">
+            {tool.screenshots.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={src}
+                alt={`${tool.name} screenshot ${i + 1}`}
+                className="border-border w-full rounded-xl border object-contain shadow-sm"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Long description */}
       {tool.longDescription && (
         <article className="prose prose-slate dark:prose-invert mb-12 max-w-none">
