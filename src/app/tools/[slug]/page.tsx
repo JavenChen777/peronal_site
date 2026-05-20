@@ -140,7 +140,7 @@ export default function ToolDetailPage({ params }: PageProps): JSX.Element {
             {tool.screenshots.map((src, i) => (
               <div key={i} className="border-border relative w-full overflow-hidden rounded-xl border shadow-sm">
                 <Image
-                  src={src}
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${src}`}
                   alt={`${tool.name} screenshot ${i + 1}`}
                   width={1280}
                   height={800}
