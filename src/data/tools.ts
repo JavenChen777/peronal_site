@@ -97,6 +97,55 @@ C++ · Qt6 · Qt Charts · CMake · JSON`,
     featured: true,
     screenshots: ['/screenshots/todolist.png'],
   },
+  {
+    slug: 'accounts-keeper',
+    name: 'AccountsKeeper',
+    description: '轻量原生 Windows 密码管理器，DPAPI 加密 + Supabase 云同步，无第三方库依赖。',
+    longDescription: `## AccountsKeeper
+
+一个轻量的原生 Windows 密码管理器，使用纯 C++ 和 Win32 API 编写，无任何第三方库依赖。
+
+## 功能特性
+
+### 账户管理
+- 原生 Win32 列表视图，支持 Product/URL、Username、Password、备注、创建日期等字段
+- 账户编辑面板，Password 字段支持显示 / 隐藏切换
+- 工具栏操作：刷新、新建、保存、删除、一键复制用户名 / 密码
+
+### 安全与加密
+- **客户端 DPAPI 加密** — 所有账户字段使用 Windows DPAPI（\`dpapi:v1:\` 前缀）加密后才离开本机，Supabase 仅存储密文
+- **密码绑定当前 Windows 用户**，其他机器或用户无法解密
+
+### 云同步与离线回退
+- **Supabase 云同步** — 通过环境变量 \`SUPABASE_URL\` / \`SUPABASE_KEY\` 配置，支持完整 CRUD
+- **离线回退** — 无法连接 Supabase 时自动使用本地 JSON 备份（\`%APPDATA%\\AccountsKeeper\\accounts_backup.json\`）
+- **自动上传** — 下次成功刷新时，将仅存于本地的账户自动同步到云端
+
+### 系统集成
+- **全局热键** — \`Ctrl + Alt + K\` 在任意位置切换窗口显示 / 隐藏
+- **系统托盘** — 关闭窗口时最小化到托盘，支持托盘菜单重新打开或完全退出
+- **单实例** — 再次启动时将已有窗口带至前台
+- **开机启动** — 可通过设置面板勾选，写入 / 移除 Windows \`Run\` 注册表项
+- **代理支持** — 可选 HTTP 代理，支持用户名 / 密码认证，代理密码经 DPAPI 加密存储
+- **设置持久化** — 代理与启动偏好保存至 \`%APPDATA%\\AccountsKeeper\\settings.ini\`
+
+## 环境要求
+
+- Windows 10 / 11
+- Visual Studio 2022（Desktop development with C++ 工作负载）
+- CMake 3.20+ 或直接使用 \`build_msvc.bat\`
+
+## Tech Used
+
+C++ · Win32 API · DPAPI · Supabase · CMake`,
+    category: 'productivity',
+    tags: ['windows', 'password-manager', 'security', 'dpapi', 'supabase', 'cpp', 'win32', 'tray', 'encryption'],
+    icon: '🔑',
+    githubUrl: 'https://github.com/JavenChen777/accounts_keeper',
+    status: 'stable',
+    featured: false,
+    screenshots: ['/screenshots/accountskeeper.png'],
+  },
 ];
 
 export default tools;
